@@ -1,0 +1,6 @@
+{
+	"integrationFolder": "cypress/e2e/",
+	"fixturesFolder": "cypress/fixtures",
+	"supportFile": "cypress/support/index.js",
+	"video": true
+  }
