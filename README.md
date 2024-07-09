@@ -18,3 +18,15 @@ Example Test Data (cypress/fixtures/data.json)
 
 **Test File**
 The test file is stored in a cy file (todo.cy.js) located in the cypress\e2e\1-HTMLTABLE\ directory
+
+
+**Assignment Is in file:- cypress\e2e\1-HTMLTABLE\Assignment.cy.js**
+Please Refer to the cypress.yml(.github/workflows/cypress.yml) file for Github ACTIONS 
+This repository contains automated tests using Cypress for the following scenarios:
+Login and reuse the session
+Wait for API rather than element in UI
+Conditionally check if an element exists and click on it
+Use GitHub Actions to run tests in a pipeline
+
+
+
