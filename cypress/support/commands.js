@@ -10,7 +10,20 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('login', (username, password) => { 
+	cy.session([username,password],()=>{
+		cy.visit('/');
+		cy.get('#login2').click();
+		cy.get('#loginusername').should('be.visible');
+		cy.get('#loginusername').clear().type(username)
+		cy.get('#loginpassword').clear().type(password)
+		cy.get('[onclick="logIn()"]').click();
+		cy.get('#logout2').should('be.visible');
+	}),{
+		cacheAcrossSpecs: true
+	}
+ })
+
 //
 //
 // -- This is a child command --
