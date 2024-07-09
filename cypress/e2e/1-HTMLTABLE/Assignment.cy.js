@@ -29,16 +29,35 @@ describe("After Waiting and verification", () => {
       // Assertions based on the interception response
       expect(interception.response.statusCode).to.equal(200);
     });
-    cy.get(".btn").then(($el) => {
-      if ($el.length) {
+
+    // write a code for an element which simetimes exist and sometimes doesn't exist
+
+    // cy.get(".button").then(($el) => { //Modify using another method
+    //   if ($el.length) {
+    //     if($el.is(':visible')){
+    //     cy.wrap($el).contains(".btn", "Add to cart").click();
+    //     cy.on("window:alert", (alertText) => {
+    //       expect(alertText).to.equal("Product added.");
+    //     });
+    //   } else {
+    //     // Element does not exist, handle accordingly
+    //     cy.log("Element does not exist");
+    //   }}
+    // });
+    cy.wait(2000);
+    cy.get(".btn")
+      .should("have.length.gte", 0)
+      .then(function ($el) {
+        if (!$el.length) {
+          cy.log("No elemts found")
+          return;
+        }
+        cy.wait(2000);
+        // cy.wrap($el).find(".btn").click({ force: true, multiple: true });
         cy.wrap($el).contains(".btn", "Add to cart").click();
         cy.on("window:alert", (alertText) => {
-          expect(alertText).to.equal("Product added.");
-        });
-      } else {
-        // Element does not exist, handle accordingly
-        cy.log("Element does not exist");
-      }
-    });
+                expect(alertText).to.equal("Product added.");
+              });
+      });
   });
 });
